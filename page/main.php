@@ -60,9 +60,9 @@
     </table>
 </div>
 <?php include "loadInventory.php"; include "loadMapinfo.php";?>
+
+<script type="text/javascript" src="interConnect.js"></script>
 </body>
-
-
 </html>
 
 

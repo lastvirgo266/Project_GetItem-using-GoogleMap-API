@@ -41,8 +41,8 @@ while($row = $sql->fetch_row()){ //fectch_array 에서 고장났음
 //document.write("<script type='text/javascript' src='map.js'><"+"/script>");
 document.write("<script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDuEOzbLWaXL7OzKZw_F4NueSezjfbjDxs&callback=initMap'><"+"/script>");
 var mapItemInfo = <?php echo json_encode($mapItemInfo) ?>;
-var markLocation;
-var marker;
+var markLocation =[];
+var marker = [];
 
 //-----------------Get Map ----------------//
 navigator.geolocation.getCurrentPosition(
@@ -67,6 +67,7 @@ var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
 //-------------------Making Marekr from mapItem---------------//
 for(var i=0; i<mapItemInfo.length; i++){
   markLocation[i] = new google.maps.LatLng(mapItemInfo[i].latitude, mapItemInfo[i].longtitude); // 마커가 위치할 위도와 경도
+  // alert(mapItemInfo[i].latitude); // TEST
   marker[i] = new google.maps.Marker({
     position: markLocation,
     title: 'Hello World!',
@@ -78,8 +79,8 @@ for(var i=0; i<mapItemInfo.length; i++){
   //Marker Click Event
   var infowindow = new google.maps.InfoWindow({content: content});
   
-  google.maps.event.addListener(marker, "click", function() {
-  infowindow.open(map,marker);
+  google.maps.event.addListener(marker[i], "click", function() {
+  infowindow.open(map,marker[i]);
   });
 }
 

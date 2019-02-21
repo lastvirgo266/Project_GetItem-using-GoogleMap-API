@@ -21,6 +21,9 @@ var markLocation[]
 
 
 //-----------Searching Item ------------//
+
+document.getElementById("GetItemBtn").addEventListener("click", searchItem);
+
 function searchItem(){
     navigator.geolocation.getCurrentPosition(searching);
     function searching(position){
@@ -30,11 +33,15 @@ function searchItem(){
         for(var i=0; i<marker.length; i++){
             if(marker[i].getMap() != null){
                 var distance = Math.sqrt(Math.pow(markLocation[i].latitude - cur_latitude,2) + Math.pow(markLocation[i].longtitude - cur_longtitude,2));
-                if(distance <= 50){ //If distance is over 50, add marker
-                    marker.setMap(null);
+                if(distance <= 99999){ //If distance is over 50, add marker
+                    marker[i].setMap(null);
                     var img = document.createElement('img');
                     img.src = 'items/'+ mapIteminfo[i].code +'.jpg';
                     inventory[inventory.length].appendChild(img);
+                    
+                    alert(marker[i].number); //TEST
+
+
                     //Ajax를 이용한 DB에서 목록 삭제
                     $.ajax({
                         url:'searchingAJAX.php',
@@ -50,7 +57,9 @@ function searchItem(){
 
     }
 }
-document.getElementById("GetItemBtn").addEventListener("click", searchItem());
+
+
+
 
 
 //----------- Save Info ----------//
