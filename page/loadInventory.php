@@ -43,21 +43,6 @@ fclose($fp);
 ?>
 
 <script>
-//--------------------Making Item Inventory--------------------------------------//
-//var dsec = <?= json_encode($dsec) ?>; //DB로부터 가져온 Item desc
-var name = '<?= $name?>'; //이름
-var items = <?= json_encode($items) ?>; //회원이 가지고있는 아이템 목록들
-var itemsAmount = <?= json_encode($itemsAmount) ?>;// 회원이 가지고있는 아이템 양들
 
-
-var inventory = document.getElementsByClassName('item');
-//Change background color
-for(var i=0; i<inventory.length; i++){
-    var img = document.createElement('img');
-    if(items[i]) img.src = 'items/'+ items[i] +'.jpg';
-    inventory[i].appendChild(img);
-    //item[i].style.backgroundColor = 'cyan'; //
-    //imem[i].src;
-}
 
 </script>

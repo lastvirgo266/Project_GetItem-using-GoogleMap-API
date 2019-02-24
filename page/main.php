@@ -21,7 +21,7 @@
 		echo "<h2>{$_SESSION['userid']} 님 환영합니다.</h2>";
 	?>
 
-	<a href="/member/logout.php"><input type="button" value="로그아웃" /></a>
+	<a href="/member/logout.php"><input type="button" id="GetlgoutBtn" value="로그아웃" /></a>
 
 	<?php 
 		}else{
@@ -31,7 +31,7 @@
 </div>
 
 
-<button id="GetItemBtn">Try it</button>
+<button id="GetItemBtn">Get Item</button>
 
 
 
@@ -59,9 +59,9 @@
     </tr>
     </table>
 </div>
-<?php include "loadInventory.php"; include "loadMapinfo.php";?>
+<?php include "loadinfo.php"; include "addListener.php";?>
 
-<script type="text/javascript" src="interConnect.js"></script>
+
 </body>
 </html>
 
